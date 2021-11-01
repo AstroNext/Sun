@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sun.CustomerApplicaiton.Views.MainPage"
+             Title="Sun Market">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DimGray">
+            <Grid>
+                <Image Source="background.jpg" Aspect="Fill" Opacity="0.2"/>
+                <StackLayout>
+                    <StackLayout Margin="10">
+                        <Frame Padding="0" CornerRadius="15" BackgroundColor="Transparent">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                                    <Entry FontSize="Medium" Placeholder="Search " HorizontalOptions="FillAndExpand"
+                                           x:Name="searchInput" Margin="10" HorizontalTextAlignment="Center" 
+                                           PlaceholderColor="DimGray" TextColor="Black" Keyboard="Plain"/>
+                                </Frame>
+                                <Frame Padding="0" CornerRadius="10" BackgroundColor="DimGray">
+                                    <ImageButton BackgroundColor="Transparent" Margin="10" 
+                                                 HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand"
+                                                 Source="search.png" x:Name="SearchButton"/>
+                                </Frame>
+                                <Frame Padding="0" CornerRadius="10" BackgroundColor="DimGray">
+                                    <ImageButton Margin="10" HeightRequest="35" WidthRequest="35" 
+                                                 HorizontalOptions="EndAndExpand" Source="scan.png" 
+                                                 BackgroundColor="Transparent"
+                                                 x:Name="ScanButton"/>
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout>
+                        <ListView x:Name="prcList" SeparatorVisibility="None" SeparatorColor="DarkGray" IsPullToRefreshEnabled="False"
+                              ItemsSource="{Binding prcList}" SelectionMode="None" HasUnevenRows="True" Margin="20,0" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ContentView Padding="5">
+                                            <Frame CornerRadius="15" Padding="10" BackgroundColor="White">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+                                                            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0" ColumnSpacing="5" RowSpacing="0">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout  Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0">
+                                                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" >
+                                                            <Label Grid.Row="0" Text="{Binding nam}"  TextColor="#222831" 
+                                                                   FontSize="16" LineBreakMode="WordWrap" 
+                                                                   HorizontalOptions="EndAndExpand" MaxLines="5"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <BoxView BackgroundColor="DarkGray" HeightRequest="1" CornerRadius="50" Margin="5"/>
+                                                    <StackLayout Orientation="Vertical">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="تومان" TextColor="Red" FontSize="13" IsVisible="{Binding Difference}"/>
+                                                            <Label Grid.Row="1" Text="{Binding price2, StringFormat=' {0:N0}'}" TextColor="Red"
+                                                                    TextDecorations="Strikethrough" FontSize="13" LineBreakMode="WordWrap"
+                                                                    MaxLines="2"/>
+                                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                                <Label Text="قیمت کالا :" TextColor="Black" FontSize="16"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="تومان" TextColor="Green" FontSize="16"/>
+                                                            <Label Grid.Row="2" Text="{Binding price,StringFormat=' {0:N0}'} "
+                                                                    TextColor="Green" FontSize="16" LineBreakMode="WordWrap" 
+                                                                    MaxLines="2"/>
+                                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                                <Label Text="قیمت فروش :" TextColor="Black" FontSize="16"/>
+                                                            </StackLayout>
+
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Grid.Row="1" Text="{Binding price2, StringFormat=' {0:N0}'}" TextColor="Black"
+                                                                    FontSize="13" LineBreakMode="WordWrap"
+                                                                    MaxLines="2"/>
+                                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                                <Label Text="بارکد کالا :" TextColor="Black" FontSize="16"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Grid.Row="2" Text="{Binding numb,StringFormat=' {0:N0}'} "
+                                                                    TextColor="Black" FontSize="16" LineBreakMode="WordWrap" 
+                                                                    MaxLines="2"/>
+                                                            <StackLayout HorizontalOptions="EndAndExpand">
+                                                                <Label Text="موجودی کالا :" TextColor="Black" FontSize="16"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

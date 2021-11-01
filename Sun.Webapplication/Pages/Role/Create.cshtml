@@ -1,0 +1,24 @@
+﻿@page
+@model Sun.Webapplication.Pages.Role.CreateModel
+@{
+    ViewData["Title"] = "New Role";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">رول جدید</h1>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 form-group text-right">
+            <label>نام رول</label>
+            <input class="form-control" name="name" id="name" type="text" />
+        </div>
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">
+                ذخیره 
+                <span class="fa fa-save pr-1"></span>
+            </button>
+        </div>
+    </div>
+</form>

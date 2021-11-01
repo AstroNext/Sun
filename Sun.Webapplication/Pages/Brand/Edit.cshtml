@@ -1,0 +1,31 @@
+﻿@page
+@model Sun.Webapplication.Pages.Brand.EditModel
+@{
+    ViewData["Title"] = "Edit Brand";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">ویرایش برند</h1>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Command.Name">نام برند</label>
+            <input class="form-control" asp-for="@Model.Command.Name" type="text" />
+        </div>
+        <input hidden asp-for="@Model.Command.Id" value="@Model.Command.Id" />
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">
+                ذخیره <span class="fa fa-save"></span>
+            </button>
+            <button asp-page="./Index" class="btn btn-warning">
+                بازگشت <span class="fa fa-arrow-left"></span>
+            </button>
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <span class="alert alert-danger">@Model.Message</span>
+            }
+        </div>
+    </div>
+</form>

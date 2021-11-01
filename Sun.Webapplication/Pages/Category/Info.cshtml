@@ -1,0 +1,54 @@
+﻿@page
+@model Sun.Webapplication.Pages.Category.InfoModel
+@{
+}
+
+<div class="text-center m-3">
+    <h1 class="display-4 p-3">لیست کالاهای دسته بندی  @ViewData["catName"]</h1>
+</div>
+
+<table class="table table-responsive-md table-bordered table-striped text-right">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>نام</th>
+            <th>برند</th>
+            <th>دسته بندی</th>
+            <th>واحد</th>
+            <th>تاریخ ایجاد</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Products.Count == 0)
+        {
+            <tr>
+                <th colspan="6">هیچ رکوردی وجود ندارد</th>
+            </tr>
+
+        }
+        else
+        {
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <th>@item.Id</th>
+                    <th>@item.Name</th>
+                    <th>@item.Brand</th>
+                    <th>@item.Category</th>
+                    <th>@item.Unit</th>
+                    <th>@item.CreationDate</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<form>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button asp-page="./Index" class="btn btn-warning">
+                بازگشت <span class="fa fa-arrow-left pr-1"></span>
+            </button>
+        </div>
+    </div>
+</form>

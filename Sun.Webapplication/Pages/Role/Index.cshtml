@@ -1,0 +1,65 @@
+﻿@page
+@model Sun.Webapplication.Pages.Role.IndexModel
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">لیست رول ها</h1>
+</div>
+
+<form>
+    <div class="row p-3">
+        <div class="col-md-6 form-group">
+            <input class="form-control text-right" name="name" id="name" type="text" placeholder="متن جستجو" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <div class="row">
+                <button type="submit" class="btn btn-success m-1">
+                    جستجو <span class="fa fa-search pr-1"></span>
+                </button>
+                <a asp-page="./create" class="btn btn-warning m-1 text-white">
+                    رول جدید <span class="fa fa-plus pr-1"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-responsive-md table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th><small>نام رول</small></th>
+                <th><small>تاریخ ساخت</small></th>
+                <th><small>عملیات</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Roles.Count == 0)
+            {
+                <tr>
+                    <th colspan="4">هیچ رکوردی وجود ندارد</th>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model.Roles)
+                {
+                    <tr>
+                        <th>@item.Id</th>
+                        <th>@item.Name</th>
+                        <th>@item.CreationDate</th>
+                        <th class="text-center">
+                            <a class="btn btn-primary m-1" asp-page="./Edit" asp-route-id="@item.Id">
+                                ویرایش <span class="fa fa-edit pr-1"></span>
+                            </a>
+                        </th>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+﻿@page
+@model Sun.Webapplication.Pages.Unit.EditModel
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">ویرایش واحد</h1>
+</div>
+
+<form method="post">
+    <div class="row ">
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Command.Name">نام واحد</label>
+            <input class="form-control" asp-for="@Model.Command.Name" type="text" />
+        </div>
+        <input hidden asp-for="@Model.Command.Id" value="@Model.Command.Id" />
+        <div class="col-md-12  text-right">
+            <button type="submit" class="btn btn-success">
+                ایجاد <span class="fa fa-save pr-1"></span>
+            </button>
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <span class="alert alert-danger">@Model.Message</span>
+            }
+        </div>
+    </div>
+</form>

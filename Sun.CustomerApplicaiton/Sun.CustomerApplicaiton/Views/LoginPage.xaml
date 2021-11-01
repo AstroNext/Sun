@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Sun.CustomerApplicaiton.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DimGray">
+            <Grid>
+                <Image Source="background.jpg" Aspect="Fill" Opacity="0.3"/>
+                <Image BackgroundColor="WhiteSmoke" Opacity="0.1" Rotation="120"/>
+                <Image BackgroundColor="#fcba03" Aspect="AspectFill" Opacity="0.9" Rotation="20" ScaleY="5" 
+                       WidthRequest="150" HorizontalOptions="StartAndExpand"  VerticalOptions="FillAndExpand"/>
+                <StackLayout Margin="20">
+                    <StackLayout Margin="0,20,0,20">
+                        <Frame HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" Padding="0" BorderColor="#fcba03"  CornerRadius="100" >
+                            <Frame HorizontalOptions="Center" WidthRequest="150" HeightRequest="150"  BorderColor="#fcba03" BackgroundColor="#fcba03" CornerRadius="100" >
+                                <Image Source="logo.png" HeightRequest="150" WidthRequest="150" />
+                            </Frame>
+                        </Frame>
+                        <StackLayout Margin="10">
+                            <Label Text="به سان مارکت خوش امدید" FontSize="44" TextColor="White" FontAttributes="Bold" FontFamily="FredokaOne"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Frame Padding="20" CornerRadius="15" BackgroundColor="Transparent">
+                        <StackLayout >
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Frame Padding="0" CornerRadius="15"  HorizontalOptions="FillAndExpand">
+                                    <Entry FontSize="Medium" Placeholder="شماره تلفن" HorizontalOptions="FillAndExpand"
+                                           x:Name="usernameInput" Margin="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+                                           PlaceholderColor="DimGray" TextColor="Black" Keyboard="Plain" IsPassword="False"
+                                           FontFamily="Righteous"/>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="5">
+                                <Button Text="ورود" FontSize="18" FontAttributes="Bold" BackgroundColor="#fcba03" TextColor="White"
+                                        CornerRadius="15" FontFamily="Righteous" x:Name="LoginButton" Clicked="LoginButton_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Margin="20" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                    <Button Text="ثبت نام" x:Name="RegisterBtn" Clicked="RegisterBtn_Clicked" BackgroundColor="Transparent">
+                    </Button>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

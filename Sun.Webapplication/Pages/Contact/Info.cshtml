@@ -1,0 +1,55 @@
+﻿@page
+@model InfoModel
+@{
+    ViewData["Title"] = "Contact Info";
+}
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">مشخصات حساب</h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.ClientId">کد کلاینت</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.ClientId" type="text" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">مشخصات فردی</h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.FirstName">نام</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.FirstName" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.LastName">نام خانوادگی</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.LastName" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.Adress">آدرس</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.Adress" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.PostCode">کد پستی</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.PostCode" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.Phonenumber">شماره تلفن</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.Phonenumber" type="text" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">وضعیت حساب کاربری</h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.IsLogin">وضعیت ورود</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.IsLogin" value="@Model.Contact.IsLogin" type="checkbox" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Contact.IsBlock">وضعیت انسداد</label>
+        <input disabled class="form-control" asp-for="@Model.Contact.IsBlock" value="@Model.Contact.IsBlock" type="checkbox" />
+    </div>
+</div>

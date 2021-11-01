@@ -1,0 +1,49 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Add Admin";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">ادمین جدید</h1>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <h4 class="border-bottom p-3">مشخصات فردی</h4>
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>نام کامل </label>
+            <input class="form-control" name="name" id="name" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>شماره تلفن </label>
+            <input class="form-control" name="phonenumber" id="phonenumber" type="text" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <h4 class="border-bottom p-3">مشخصات کاربری</h4>
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>نام کاربری</label>
+            <input class="form-control" name="username" id="username" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>رمز عبور</label>
+            <input class="form-control" name="password" id="password" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>دسترسی</label>
+            <select class="form-control" asp-items="@Model.PremissionList" name="roleId" id="roleId">
+                <option value="0">سطح دسترسی را انتخاب کنید</option>
+            </select>
+        </div>
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">
+                ایجاد <span class="fa fa-save pr-1"></span>
+            </button>
+        </div>
+    </div>
+</form>

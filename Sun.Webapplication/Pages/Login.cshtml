@@ -1,0 +1,37 @@
+﻿@page
+@model Sun.Webapplication.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">صفحه ورود</h1>
+    
+</div>
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 form-group text-right">
+            <label>نام کاربری </label>
+            <input class="form-control" name="username" id="username" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label>رمز عبور</label>
+            <input class="form-control" name="password" id="password" type="password" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-6 text-right">
+            <button class="btn btn-success">
+                ورود
+            </button>
+        </div>
+        <div class="col col-6 text-center">
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <p class="alert alert-danger">@Model.ErrorMessage</p>
+            }
+        </div>
+    </div>
+</form>

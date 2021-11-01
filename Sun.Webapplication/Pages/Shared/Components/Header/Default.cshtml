@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@inject Framework.Application.Auth.IAuthHelper authHelper;
+<header>
+    <nav class="navbar navbar-expand-lg box-shadow navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" asp-page="/Index">
+                <img src="~/img/logo (1).png" width="30" height="30" class="d-inline-block align-top ml-2" alt="Sun Logo">
+                Sun Market
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav flex-grow-1">
+                    @*@if (authHelper.CurrentAccountRole() != null)
+                    {
+                        if (int.Parse(authHelper.CurrentAccountRole()) < 6)
+                        {*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Product
+                                </a>
+                                <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-page="/Product/Index">کالا</a>
+                                    <a class="dropdown-item" asp-page="/Category/Index">دسته بندی</a>
+                                    <a class="dropdown-item" asp-page="/Brand/Index">برند</a>
+                                    <a class="dropdown-item" asp-page="/Unit/Index">واحد</a>
+                                </div>
+                            </li>
+                        @*}
+
+                        if (int.Parse(authHelper.CurrentAccountRole()) < 4)
+                        {*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Users
+                                </a>
+                                <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+                                    @*@if (int.Parse(authHelper.CurrentAccountRole()) < 2)
+                                    {*@
+                                        <a class="nav-link text-dark border-right" asp-page="/Role/Index">رول ها</a>
+                                        <a class="nav-link text-dark border-right" asp-page="/Admin/Index">ادمین ها</a>
+                                    @*}*@
+                                    <a class="nav-link text-dark border-right" asp-page="/Contact/Index">مخاطب ها</a>
+                                </div>
+                            </li>
+                        @*}
+
+                        if (int.Parse(authHelper.CurrentAccountRole()) < 4)
+                        {*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Orders
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                </div>
+                            </li>
+                        @*}
+
+                        if (int.Parse(authHelper.CurrentAccountRole()) < 8)
+                        {*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Shipment
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                </div>
+                            </li>
+                        @*}
+
+                        if (int.Parse(authHelper.CurrentAccountRole()) < 2)
+                        {*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Accountent
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                </div>
+                            </li>
+                        @*}
+                    }*@
+                </ul>
+                @if (authHelper.IsAuthenticated())
+                {
+                    <form class="form-inline">
+                        <a class="text-white" asp-page="/Login" asp-page-handler="Logout">Logout</a>
+                    </form>
+                }
+                else
+                {
+                    <form class="form-inline">
+                        <a class="text-white" asp-page="/Login">Login</a>
+                    </form>
+                }
+            </div>
+        </div>
+    </nav>
+</header>

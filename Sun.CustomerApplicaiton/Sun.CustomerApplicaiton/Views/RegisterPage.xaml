@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sun.CustomerApplicaiton.Views.RegisterPage"
+             Title="ثبت نام">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Image Source="background.jpg" Aspect="Fill" Opacity="0.3"/>
+                <Image BackgroundColor="WhiteSmoke" Opacity="0.1" Rotation="120"/>
+                <Image BackgroundColor="#fcba03" Aspect="AspectFill" Opacity="0.9" Rotation="20" ScaleY="5" 
+                       WidthRequest="150" HorizontalOptions="StartAndExpand"  VerticalOptions="FillAndExpand"/>
+                <StackLayout Margin="20">
+                    <StackLayout Margin="0,20,0,20">
+                        <StackLayout Margin="10">
+                            <Label Text="ثبت نام" FontSize="44" TextColor="White" FontAttributes="Bold" FontFamily="FredokaOne"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Frame Padding="20" CornerRadius="15" BackgroundColor="Transparent">
+                        <StackLayout >
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Frame Padding="0" CornerRadius="15"  HorizontalOptions="FillAndExpand">
+                                    <Entry FontSize="Medium" Placeholder="شماره تلفن" HorizontalOptions="FillAndExpand"
+                                           x:Name="phoneNumberInput" Margin="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+                                           PlaceholderColor="DimGray" TextColor="Black" Keyboard="Plain" IsPassword="False"
+                                           FontFamily="Righteous"/>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Frame Padding="0" CornerRadius="15"  HorizontalOptions="FillAndExpand">
+                                    <Entry FontSize="Medium" Placeholder="نام و نام خانوادگی" HorizontalOptions="FillAndExpand"
+                                           x:Name="nameInput" Margin="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+                                           PlaceholderColor="DimGray" TextColor="Black" Keyboard="Plain" IsPassword="False"
+                                           FontFamily="Righteous"/>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="5">
+                                <Button Text="ورود" FontSize="18" FontAttributes="Bold" BackgroundColor="#fcba03" TextColor="White"
+                                        CornerRadius="15" FontFamily="Righteous" x:Name="LoginButton" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

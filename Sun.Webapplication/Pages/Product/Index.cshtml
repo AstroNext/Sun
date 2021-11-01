@@ -1,0 +1,90 @@
+﻿@page
+@model Sun.Webapplication.Pages.Product.IndexModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="text-center border-bottom">
+    <h1 class="display-4 p-3">لیست کالا ها</h1>
+</div>
+
+<form>
+    <div class="row p-3">
+        <div class="col-md-6 form-group">
+            <div class="row">
+                <input class="form-control text-right m-1" name="name" id="name" type="text" placeholder="نام کالا ..." />
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <div class="row text-center">
+                <button type="submit" class="btn btn-success m-1">
+                    جستجو <span class="fa fa-search"></span>
+                </button>
+                <a asp-page="./Create" class="btn btn-primary m-1 text-white">
+                   کالای جدید <span class="fa fa-plus"></span>
+                </a>
+                <a asp-page="./Index" asp-page-handler="Removed" class="btn btn-warning m-1 text-white">
+                    کالاهای حذف شده <span class="fa fa-remove"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-responsive-md table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th><small>#</small></th>
+                <th><small>نام</small></th>
+                <th><small>برند</small></th>
+                <th><small>دسته بندی</small></th>
+                <th><small>واحد</small></th>
+                <th><small>قیمت فروش(ریال)</small></th>
+                <th><small>عملیات</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.products.Count == 0)
+            {
+                <tr>
+                    <th colspan="7">هیچ رکوردی وجود ندارد</th>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model.products)
+                {
+                    <tr>
+                        <th>@item.Id</th>
+                        <th>@item.Name</th>
+                        <th>@item.Brand</th>
+                        <th>@item.Category</th>
+                        <th>@item.Unit</th>
+                        <th>@item.UnitPrice.ToString("N0")</th>
+                        <th class="text-center">
+                            <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">
+                                ویرایش <span class="fa fa-edit"></span>
+                            </a>
+                            @if (!item.IsRemoved)
+                            {
+                                <a class="btn btn-danger m-1" asp-page="./Index" asp-page-handler="Remove" asp-route-id="@item.Id">
+                                    حذف <span class="fa fa-remove"></span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-warning m-1" asp-page="./Index" asp-page-handler="Resotre" asp-route-id="@item.Id">
+                                    بازگرداندن <span class="fa fa-recycle"></span>
+                                </a>
+                            }
+                        </th>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,84 @@
+﻿@page
+@model Sun.Webapplication.Pages.Contact.IndexModel
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">لیست مخاطبین</h1>
+</div>
+
+<form>
+    <div class="row p-3">
+        <div class="col-md-6 form-group">
+            <input class="form-control text-right" name="name" id="name" type="text" placeholder="متن جستجو در اسم" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <div class="row">
+                <button type="submit" class="btn btn-success m-1">
+                    جستجو <span class="fa fa-search pr-1"></span>
+                </button>
+                <a asp-page="./Create" class="btn btn-warning m-1 text-white">
+                    مخاطب جدید <span class="fa fa-plus pr-1"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-responsive-lg table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th><small>نام و نام خانوادگی</small></th>
+                <th><small>شماره تلفن</small></th>
+                <th><small>آدرس</small></th>
+                <th><small>زمان ساخت حساب</small></th>
+                <th><small>عملیات</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.contacts.Count == 0)
+            {
+                <tr>
+                    <th colspan="6">هیچ رکوردی وجود ندارد</th>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model.contacts)
+                {
+                    <tr>
+                        <th>@item.Id</th>
+                        <th>@item.FirstName @item.LastName</th>
+                        <th>@item.Phonenumber</th>
+                        <th>@item.Adress|@item.PostCode</th>
+                        <th>@item.CreationTime</th>
+                        <th class="text-center">
+                            <a class="btn btn-primary m-1" asp-page="./Edit" asp-route-id="@item.Id">ویرایش
+                             <span class="fa fa-edit pr-1"></span>
+                            </a>
+                            <a class="btn btn-success m-1" asp-page="./Info" asp-route-id="@item.Id">اطلاعات 
+                                <span class="fa fa-info pr-1"></span>
+                            </a>
+                            @if (!item.IsBlock)
+                            {
+                                <a class="btn btn-danger m-1" asp-page="./Index" asp-page-handler="Block" asp-route-id="@item.Id">
+                                    مسدودسازی <span class="fa fa-lock pr-1"></span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-warning m-1" asp-page="./Index" asp-page-handler="Unblock" asp-route-id="@item.Id">
+                                    آزادسازی <span class="fa fa-unlock pr-1"></span>
+                                </a>
+                            }
+                        </th>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

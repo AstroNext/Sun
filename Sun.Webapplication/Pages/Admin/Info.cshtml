@@ -1,0 +1,61 @@
+﻿@page
+@model InfoModel
+@{
+    ViewData["Title"] = "Admin Info";
+}
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">مشخصات حساب</h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.Username">نام کاربری</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.Username" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.Role.Name">سطح دسترسی</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.Role.Name" type="text" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">مشخصات اصلی</h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.Name">نام</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.Name" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.Phonenumber">شماره تلفن</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.Phonenumber" type="text" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.JoinDate">تاریخ ساخت</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.JoinDate" type="text" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <h4 class="border-bottom p-3">وضعیت حساب </h4>
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.IsBlock">وضعیت انسداد</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.IsBlock" value="@Model.Admin.IsBlock" type="checkbox" />
+    </div>
+    <div class="col-md-6 form-group text-right">
+        <label asp-for="@Model.Admin.CanLogin">وضعیت توانایی ورود</label>
+        <input disabled class="form-control" asp-for="@Model.Admin.CanLogin" value="@Model.Admin.CanLogin" type="checkbox" />
+    </div>
+</div>
+
+<form>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button asp-page="./Index" class="btn btn-warning">
+                بازگشت <span class="fa fa-arrow-left pr-1"></span>
+            </button>
+        </div>
+    </div>
+</form>

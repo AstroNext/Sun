@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Admins";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">لیست ادمین ها</h1>
+</div>
+
+<form>
+    <div class="row p-3">
+        <div class="col-md-6 form-group">
+            <input class="form-control text-right" name="name" id="name" type="text" placeholder="متن جستجو در اسم" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <div class="row">
+                <button type="submit" class="btn btn-success m-1">
+                    جستجو <span class="fa fa-search pr-1"></span>
+                </button>
+                <a asp-page="./Create" class="btn btn-warning m-1 text-white">
+                    ادمین جدید <span class="fa fa-plus pr-1"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-responsive-lg table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th><small>نام </small></th>
+                <th><small>نام کاربری </small></th>
+                <th><small>سطح دسترسی</small></th>
+                <th><small>عملیات</small></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Admins.Count == 0)
+            {
+                <tr>
+                    <th colspan="6">هیچ رکوردی وجود ندارد</th>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model.Admins)
+                {
+                    <tr>
+                        <th>@item.Id</th>
+                        <th>@item.Name</th>
+                        <th>@item.Username</th>
+                        <th>@item.Role.Name</th>
+                        <th class="text-center">
+                            <a class="btn btn-success m-1" asp-page="./Info" asp-route-id="@item.Id">
+                                اطلاعات <span class="fa fa-info"></span>
+                            </a>
+                            <a class="btn btn-primary m-1" asp-page="./Edit" asp-route-id="@item.Id">
+                                ویرایش <span class="fa fa-edit"></span>
+                            </a>
+                            @if (!item.IsBlock)
+                            {
+                                <a class="btn btn-danger m-1" asp-page="./Index" asp-page-handler="Block" asp-route-id="@item.Id">
+                                    مسدود کردن <span class="fa fa-lock pr-1"></span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-warning m-1" asp-page="./Index" asp-page-handler="Unblock" asp-route-id="@item.Id">
+                                    آزاد سازی <span class="fa fa-unlock pr-1"></span>
+                                </a>
+                            }
+                            @if (!item.CanLogin)
+                            {
+                                <a class="btn btn-warning m-1" asp-page="./Index" asp-page-handler="OpenLogin" asp-route-id="@item.Id">
+                                    بستن ورود <span class="fa fa-lock pr-1"></span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-danger m-1" asp-page="./Index" asp-page-handler="CloseLogin" asp-route-id="@item.Id">
+                                    بازکردن ورود <span class="fa fa-unlock pr-1"></span>
+                                </a>
+                            }
+                        </th>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@page
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Contact";
+}
+
+<div class="text-center">
+    <h1 class="display-4 border-bottom p-3">ویرایش مخاطب</h1>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Contact.FirstName">نام</label>
+            <input class="form-control" asp-for="@Model.Contact.FirstName" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Contact.LastName">نام خانوادگی</label>
+            <input class="form-control" asp-for="@Model.Contact.LastName" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Contact.Adress">آدرس</label>
+            <input class="form-control" asp-for="@Model.Contact.Adress" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Contact.PostCode">کد پستی</label>
+            <input class="form-control" asp-for="@Model.Contact.PostCode" type="text" />
+        </div>
+        <div class="col-md-6 form-group text-right">
+            <label asp-for="@Model.Contact.Phonenumber">شماره تلفن</label>
+            <input class="form-control" asp-for="@Model.Contact.Phonenumber" type="text" />
+        </div>
+        <input type="hidden" asp-for="@Model.Contact.Id" value="@Model.Contact.Id" />
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">
+            ثبت ویرایش <span class="fa fa-save pr-1"></span>
+            </button>
+        </div>
+    </div>
+</form>
